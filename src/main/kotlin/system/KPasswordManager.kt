@@ -1,4 +1,4 @@
-import java.security.SecureRandom
+package system
 
 class KPasswordManager {
 
