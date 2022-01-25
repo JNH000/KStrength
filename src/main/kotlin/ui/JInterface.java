@@ -1,5 +1,7 @@
 package ui;
 
+import system.*;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -36,7 +38,8 @@ public class JInterface {
 
         //Possibly add text, inputfields, ect. here
         createText();
-        panel.add(resID);
+        panel.add(resID, BorderLayout.SOUTH);
+        panel.add(createSlider(), BorderLayout.CENTER);
 
         return panel;
     }
@@ -46,8 +49,22 @@ public class JInterface {
         resIDText.setForeground(textColor);
     }
 
+    private JSlider createSlider(){
+        KPasswordManager kPasswordManager = new KPasswordManager();
+        JSlider slider = new JSlider(0, 3, 0);
+        slider.setValue(kPasswordManager.checkPassword("Test3094_W"));
+
+        slider.setEnabled(false);
+        slider.setOpaque(false);
+        slider.setMajorTickSpacing(10);
+        return slider;
+    }
+
+
     public void setText(Float strength){
         resIDText.setText(strength.toString());
     }
+
+
 
 }

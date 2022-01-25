@@ -67,4 +67,5 @@ class KPasswordManager {
         return curScore
     }
 
+
 }
