@@ -40,6 +40,7 @@ public class JInterface {
         createText();
         panel.add(resID, BorderLayout.SOUTH);
         panel.add(createSlider(), BorderLayout.CENTER);
+        panel.add(createInputField(), BorderLayout.NORTH);
 
         return panel;
     }
@@ -58,6 +59,17 @@ public class JInterface {
         slider.setOpaque(false);
         slider.setMajorTickSpacing(10);
         return slider;
+    }
+
+    private JTextField createInputField(){
+        JTextField textField = new JTextField("", 1);
+        textField.setSize(400, 50);
+        textField.setForeground(uiColor);
+        textField.setBackground(textColor);
+
+        textField.setFont(new Font("Verdana", 1, 15));
+
+        return textField;
     }
 
 
