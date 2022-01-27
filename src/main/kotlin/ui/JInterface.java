@@ -4,6 +4,8 @@ import system.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class JInterface {
 
@@ -14,6 +16,10 @@ public class JInterface {
 
     private static final Color uiColor = new Color(0x1e2733);
     private static final Color textColor = new Color(0x7ca296);
+
+    private KPasswordManager kPasswordManager = new KPasswordManager();
+
+    private static String savedInput = "";
 
     public JInterface(){
         createJFrame();
@@ -53,7 +59,7 @@ public class JInterface {
     private JSlider createSlider(){
         KPasswordManager kPasswordManager = new KPasswordManager();
         JSlider slider = new JSlider(0, 3, 0);
-        slider.setValue(kPasswordManager.checkPassword("Test3094_W"));
+        slider.setValue(kPasswordManager.checkPassword(savedInput));
 
         slider.setEnabled(false);
         slider.setOpaque(false);
@@ -61,21 +67,26 @@ public class JInterface {
         return slider;
     }
 
-    private JTextField createInputField(){
+    public JTextField createInputField(){
         JTextField textField = new JTextField("", 1);
         textField.setSize(400, 50);
         textField.setForeground(uiColor);
         textField.setBackground(textColor);
 
         textField.setFont(new Font("Verdana", 1, 15));
+        textField.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Integer strength = kPasswordManager.checkPassword(textField.getText());
+                savedInput = textField.getText();
+                resIDText.setText(strength.toString());
+            }
+        });
 
         return textField;
     }
 
 
-    public void setText(Float strength){
-        resIDText.setText(strength.toString());
-    }
 
 
 
