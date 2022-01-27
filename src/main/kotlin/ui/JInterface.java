@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 public class JInterface {
 
     private final JFrame jFrame = new JFrame();
+    private final JSlider jSlider = createSlider();
     private static JLabel resIDText = new JLabel("", SwingConstants.CENTER);
 
     private static final String version = "v0.0.1";
@@ -45,7 +46,7 @@ public class JInterface {
         //Possibly add text, inputfields, ect. here
         createText();
         panel.add(resID, BorderLayout.SOUTH);
-        panel.add(createSlider(), BorderLayout.CENTER);
+        panel.add(jSlider, BorderLayout.CENTER);
         panel.add(createInputField(), BorderLayout.NORTH);
 
         return panel;
@@ -80,6 +81,7 @@ public class JInterface {
                 Integer strength = kPasswordManager.checkPassword(textField.getText());
                 savedInput = textField.getText();
                 resIDText.setText(strength.toString());
+                jSlider.setValue(kPasswordManager.checkPassword(savedInput));
             }
         });
 
