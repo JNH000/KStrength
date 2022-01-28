@@ -10,6 +10,8 @@ class KPasswordManager {
         internal var REQ_LOWERCASE = true
         internal var REQ_UPPERCASE = true
     }
+    var strength = ""
+
 
     fun checkPassword(password: String) : Int{
         var curScore = 0
@@ -51,20 +53,28 @@ class KPasswordManager {
             if(REQ_SYMBOLS && !checkSymbols || REQ_UPPERCASE && !checkUppercase
                 || REQ_LOWERCASE && !checkLowercase || REQ_NUMBERs && !checkNumbers){
                 curScore = 1
+                strength = "MEDIUM"
             }
             //Conditions for Strong & Extreme are met
             else{
                 curScore = 2
+                strength = "STRONG"
                 if(password.length > MAX_LENGTH){
                     curScore = 3
+                    strength = "EXTREME"
                 }
             }
         }
         //Conditions for Weak are met
         else{
             curScore = 0
+            strength = "WEAK"
         }
         return curScore
+    }
+
+    fun getpStrength() : String{
+        return strength
     }
 
 

@@ -78,10 +78,11 @@ public class JInterface {
         textField.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Integer strength = kPasswordManager.checkPassword(textField.getText());
                 savedInput = textField.getText();
-                resIDText.setText(strength.toString());
                 jSlider.setValue(kPasswordManager.checkPassword(savedInput));
+                
+                String strength = kPasswordManager.getpStrength();
+                resIDText.setText(strength);
             }
         });
 
