@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 
 public class JInterface {
 
@@ -27,8 +28,12 @@ public class JInterface {
     }
 
     private void createJFrame(){
+        final URL iconURL = getClass().getResource("/img/Icon2.png");
+        ImageIcon icon = new ImageIcon(iconURL);
+
         jFrame.getContentPane().setBackground(uiColor);
         jFrame.setTitle("Password Checker " + version);
+        jFrame.setIconImage(icon.getImage());
 
         jFrame.add(createJPanel(resIDText), BorderLayout.CENTER);
 
@@ -73,6 +78,7 @@ public class JInterface {
         textField.setSize(400, 50);
         textField.setForeground(uiColor);
         textField.setBackground(textColor);
+        textField.setBorder(null);
 
         textField.setFont(new Font("Verdana", 1, 15));
         textField.addActionListener(new ActionListener() {
@@ -80,7 +86,7 @@ public class JInterface {
             public void actionPerformed(ActionEvent e) {
                 savedInput = textField.getText();
                 jSlider.setValue(kPasswordManager.checkPassword(savedInput));
-                
+
                 String strength = kPasswordManager.getpStrength();
                 resIDText.setText(strength);
             }
