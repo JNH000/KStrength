@@ -3,13 +3,13 @@
  
  The different levels of strength and their criteria are as follows:
  
- WEAK - Password is shorter than 8 characters
+    WEAK - Password is shorter than 8 characters
  
- MEDIUM - Password is 8 characters or longer
+    MEDIUM - Password is 8 characters or longer
  
- STRONG - (MEDIUM), Password has at least two "special characters" (Numbers AND Symbols)
+    STRONG - (MEDIUM), Password has at least two "special characters" (Numbers AND Symbols)
  
- EXTREME - (STRONG), Password is 17 characters or longer
+    EXTREME - (STRONG), Password is 17 characters or longer
  
  
  To use the password checker, simply input the password into the textfield and press 'Enter'.
